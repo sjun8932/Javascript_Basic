@@ -1,22 +1,27 @@
 const btn = document.querySelector('#button')
 // document.querySelector(아이디)는 그 아이디의 태그를 가져온다.
+const dictionary = [];
+
 btn.addEventListener('click', () => {
-    const wordTag = document.querySelector('#word')
-    const inputTag = document.querySelector('#input')
-    const errorTag = document.querySelector('#error')
-    const word = document.querySelector('#word').textContent
-    const input = document.querySelector('#input').value
-    const lastIndex = word.length-1
-    const w =  word[lastIndex]
-    const i = input[0]
-    if (w === i){
-        wordTag.textContent = input
-        errorTag.textContent = ''
-        inputTag.value = '' 
-        inputTag.focus()
-    } else {
-        errorTag.textContent =  '땡'
-        inputTag.value = ''
-        inputTag.focus()
-    }
+   
+    let wordTag = document.querySelector('#word')
+    let inputTag = document.querySelector('#input')
+    let errorTag = document.querySelector('#error')
+    let word = wordTag.textContent
+    let input = inputTag.value
+    
+   
+        if (word[word.length-1] === input[0]){
+            wordTag.textContent = input
+            errorTag.textContent = ''
+            inputTag.value = '' 
+            inputTag.focus()
+            dictionary.push(input)
+        } else {
+            errorTag.textContent =  '땡'
+            inputTag.value = ''
+            inputTag.focus()
+        }
+
+    
 })
