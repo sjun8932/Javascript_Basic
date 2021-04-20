@@ -7,7 +7,6 @@ let answer = []
 let n = 0
 
 for (let n = 0;  n <= 3; n+=1 ) {
-     console.log(Math.random())
    const index = Math.floor(Math.random()*(10 - n)) // 10-n을 해주어야 undefined 방지
     answer.push(numbers[index])
     numbers.splice(index, 1)  
@@ -37,7 +36,9 @@ check.addEventListener('click', () => {
                       }
                  }
             }
-            logs.appendChild(document.createTextNode(`${input.value}: ${strike} strike ${ball} ball`))
+            const message = document.createTextNode(`${input.value}: ${strike} strike ${ball} ball`)
+            logs.appendChild(message)
+            logs.appendChild(document.createElement('br'));
             if (count > 10 ){
                  logs.appendChild(document.createTextNode(`Game Over: ${answer.join('')}`))
             } else {
