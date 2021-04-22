@@ -2,12 +2,15 @@ const input = document.querySelector('#input');
 const check = document.querySelector('#check');
 const logs = document.querySelector('#logs');
 
-let numbers = [0,1,2,3,4,5,6,7,8,9]
+let numbers = []
+for (let n = 0; n <=9; n+=1){
+     numbers.push(n)
+}
 let answer = []
 let n = 0
 
 for (let n = 0;  n <= 3; n+=1 ) {
-   const index = Math.floor(Math.random()*(10 - n)) // 10-n을 해주어야 undefined 방지
+   const index = Math.floor(Math.random()*numbers.length) // 10-n을 해주어야 undefined 방지
     answer.push(numbers[index])
     numbers.splice(index, 1)  
 }
@@ -20,7 +23,7 @@ check.addEventListener('click', () => {
     const value = input.value;
     if (value && value.length === 4) {
        if (answer.join('') === value){
-            logs.appendChild(document.createTextNode('HR'))
+            logs.textContent = 'HR'
        } else{
             console.log('다르다');
             let strike = 0;
@@ -33,12 +36,11 @@ check.addEventListener('click', () => {
                            } else {
                               ball +=1
                            }
-                      }
+                
+                         }
                  }
             }
-            const message = document.createTextNode(`${input.value}: ${strike} strike ${ball} ball`)
-            logs.appendChild(message)
-            logs.appendChild(document.createElement('br'));
+            logs.append(`${input.value}: ${strike} strike ${ball} ball` , document.createElement('br')) // append는 인터넷 익스플로러에서 작동하지 않는 점에서 appendchild와 다르다
             if (count > 10 ){
                  logs.appendChild(document.createTextNode(`Game Over: ${answer.join('')}`))
             } else {
