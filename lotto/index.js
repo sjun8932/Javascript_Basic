@@ -7,4 +7,7 @@ while (candidate.length>0) {
   shuffle.push(value);
 }
 console.log(shuffle)
-
+const winBalls = shuffle.slice(0,6);
+const bonus = shuffle[6];
+console.log(winBalls);
+console.log(bonus);
