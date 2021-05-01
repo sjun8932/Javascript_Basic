@@ -17,7 +17,7 @@ setInterval(() => {
         computerChoice = 'rock'
     }
     computerTag.style.background = `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${rspCoord[computerChoice]} 0`;
-}, 50)
+}, 300)
 
 
 const rockTag = document.querySelector('#rock');
@@ -27,12 +27,12 @@ const paperTag = document.querySelector('#paper');
 const score = {
     rock: 0,
     scissors: 1,
-    papaer: -1,
+    paper: -1,
 }
 
 rockTag.addEventListener('click', () => {
-    const myScore = score.rock;
-    const computerChoice = score[computerChoice];
+    const myScore = score.rock; // 0
+    const computerScore = score[computerChoice];
     const diff = myScore - computerScore;
     const scoreTag = document.querySelector('#score')
     let accScore = Number(scoreTag.textContent);
@@ -42,11 +42,12 @@ rockTag.addEventListener('click', () => {
     }else if (diff === -2 || diff === 1){
         accScore -= 1;
     }
-    scoreTag.textContent == accScore;
+    scoreTag.textContent = accScore;
 });
+
 scissorsTag.addEventListener('click', () => { 
     const myScore = score.scissors;
-    const computerChoice = score[computerChoice];
+    const computerScore = score[computerChoice];
     const diff = myScore - computerScore;
     const scoreTag = document.querySelector('#score')
     let accScore = Number(scoreTag.textContent);
@@ -56,11 +57,12 @@ scissorsTag.addEventListener('click', () => {
     }else if (diff === -2 || diff === 1){
         accScore -= 1;
     }
-    scoreTag.textContent == accScore;
+    scoreTag.textContent = accScore;
 });
-paperTag.addEventListener('clcick', () => {
-    const myScore = score.papaer;
-    const computerChoice = score[computerChoice];
+
+paperTag.addEventListener('click', () => {
+    const myScore = score.paper;
+    const computerScore = score[computerChoice];
     const diff = myScore - computerScore;
     const scoreTag = document.querySelector('#score')
     let accScore = Number(scoreTag.textContent);
@@ -70,5 +72,6 @@ paperTag.addEventListener('clcick', () => {
     }else if (diff === -2 || diff === 1){
         accScore -= 1;
     }
-    scoreTag.textContent == accScore;
+    scoreTag.textContent = accScore;
+    console.log(scoreTag.textContent = accScore);
 });
